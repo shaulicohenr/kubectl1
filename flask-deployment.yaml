@@ -1,25 +1,20 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: cohen-environment
----
-apiVersion: v1
 kind: Service
 metadata:
-  name: cohen-clusterIP
+  name: cohen-clusterip
+  namespace: cohen-environment
 spec:
-  type: ClusterIP
   selector:
-    app: nginx
+    app: flask
   ports:
-    - protocol: TCP
-      port: 80 # ClusterIP's Port
-      targetPort: 5000 # Pod's Port
+    - port: 80
+      targetPort: 5000
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask-deployment
+  namespace: cohen-environment
 spec:
   replicas: 2
   selector:
