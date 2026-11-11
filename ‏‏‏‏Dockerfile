@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jdk
+FROM flask
 WORKDIR /app
-COPY src/main/java/com/example/HelloWorld.java .
-CMD ["java", "HelloWorld.java"]
+COPY flask-deployment.yaml .
+CMD ["java"]
