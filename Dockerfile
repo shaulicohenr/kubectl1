@@ -1,4 +1,6 @@
 FROM python:3.10-slim
 WORKDIR /app
-COPY print.py .
-CMD ["python","print.py"]
+COPY app.py /app
+RUN pip install flask
+CMD ["python", "app.py"]
+
